@@ -1,0 +1,55 @@
+<div>
+    <div *ngIf="isLoading" class="overlay">
+        <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
+        </mat-progress-spinner>
+    </div>
+    <br>
+    <div class="container">
+        <div class="container">
+
+            <div fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch">
+                <form class="filter-form" fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="space-around start">
+
+                    <mat-form-field>
+                        <input type="text" placeholder="Filter By Country" aria-label="Number" matInput [formControl]="countryFilter" [matAutocomplete]="countryAuto" [value]="countryfilterSelected">
+                        <mat-autocomplete #countryAuto="matAutocomplete" (optionSelected)="onCountryChange($event)">
+                            <mat-option value="All" selected>All</mat-option>
+                            <mat-option *ngFor="let option of countryFilteredOptions | async" [value]="option">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input type="text" placeholder="Filter By Department" aria-label="Number" matInput [formControl]="departmentFilter" [matAutocomplete]="departmentAuto">
+                        <mat-autocomplete #departmentAuto="matAutocomplete" (optionSelected)="onDepartmentChange($event)">
+                            <mat-option value="All">All</mat-option>
+                            <mat-option *ngFor="let option of departmentFilteredOptions | async" [value]="option">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+
+                </form>
+            </div>
+
+        </div>
+
+        <div id="postings" class="container">
+
+            <div fxLayout="column" fxLayoutAlign="start stretch">
+                <div *ngFor="let posting of postingList">
+                    <mat-nav-list>
+                        <a id="posting" class="posting" mat-list-item [routerLink]="['/details', posting.id]">
+                            <mat-icon mat-list-icon>business</mat-icon>
+                            <div mat-line class="posting-name">{{posting.name}}</div>
+                            <div mat-line class="posting-location">{{posting.location.city}}, {{posting.country.valueLabel}}</div>
+                        </a>
+                    </mat-nav-list>
+                    <mat-divider></mat-divider>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

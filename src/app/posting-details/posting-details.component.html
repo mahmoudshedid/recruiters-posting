@@ -1,0 +1,55 @@
+<div>
+    <div *ngIf="isLoading" class="overlay">
+        <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
+        </mat-progress-spinner>
+    </div>
+    <br>
+    <div class="container">
+        <div>
+            <div fxFlexOffset="1" fxFlex="98" fxLayout="row" fxLayoutAlign="start stretch">
+                <a id="back" fxLayout="row" fxLayoutAlign="space-between stretch" [routerLink]="['/']">
+                    <div class="back-to-list-icon">
+                        <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_back_ios</mat-icon>
+                    </div>
+                    <div class="back-to-list-title">Back to the list</div>
+                </a>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <div class="posting-icon">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">business</mat-icon>
+                </div>
+                <div>
+                    <div class="posting-name" mat-line>{{posting?.name}}</div>
+                    <div class="posting-location" mat-line>{{posting?.location.city}}, {{posting?.country.valueLabel}}</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div id="job-description" class="container">
+            <div fxFlexOffset="1" fxFlex="98" fxLayout="column" fxLayoutAlign="space-around start">
+                <div fxLayout="row" fxLayoutAlign="space-between stretch">
+                    <div class="decription-icon">
+                        <mat-icon aria-hidden="false" aria-label="Example home icon">menu_book</mat-icon>
+                    </div>
+                    <div class="decription-title">Job Description</div>
+                </div>
+                <div [innerHtml]="posting?.jobAd.sections.jobDescription.text"></div>
+            </div>
+        </div>
+        <br>
+        <div id="job-qualifications" class="container">
+            <div fxFlexOffset="1" fxFlex="98" fxLayout="column" fxLayoutAlign="space-around start">
+                <div fxLayout="row" fxLayoutAlign="space-between stretch">
+                    <div class="qualifications-icon">
+                        <mat-icon aria-hidden="false" aria-label="Example home icon">list_alt</mat-icon>
+                    </div>
+                    <div class="qualifications-title">What you will do:</div>
+                </div>
+                <div [innerHtml]="posting?.jobAd.sections.qualifications.text"></div>
+            </div>
+        </div>
+    </div>
+</div>

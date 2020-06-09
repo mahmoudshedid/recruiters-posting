@@ -1,0 +1,16 @@
+<mat-sidenav-container id="app">
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <div class="app-title" fxLayout="row" fxLayoutAlign="space-around center">
+        <img class="logo" src="../assets/img/recruiters-logo.png" alt="Recruiters">
+        <a routerLink="/" fxLayout="column" fxLayoutAlign=" start">
+          <span>Recruiters</span>
+          <span class="sub-title">Postings List Application</span>
+        </a>
+      </div>
+    </mat-toolbar>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
